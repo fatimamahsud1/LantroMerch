@@ -1,60 +1,43 @@
 import React, { useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const footerStyle = {
-  backgroundColor: '#007bff', // Blue background color
   padding: '40px 20px',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
   color: 'white',
   fontFamily: 'Arial, sans-serif',
-};
-
-const leftColumnStyle = {
-  flex: '1',
-  flexDirection: 'column',
-  marginRight: '20px',
-};
-
-const rightColumnStyle = {
-  flex: '1',
-  color: 'white',
+  background: 'linear-gradient(to right, #008c99, #008c99)',
+  minHeight: '60vh',
+  display: 'flex',
+  alignItems: 'center'
 };
 
 const contactTitleStyle = {
-  fontSize: '24px',
+  fontSize: '48px',
+  fontWeight: 'bold',
   margin: '0 0 20px 0',
   textAlign: 'center',
-};
-
-const formStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-};
-
-const inputRowStyle = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  marginBottom: '10px',
+  color: 'white',
 };
 
 const inputStyle = {
-  padding: '10px',
-  fontSize: '16px',
-  width: '48%',
-  boxSizing: 'border-box',
-  borderRadius: '4px',
-  border: 'none',
-};
-
-const textareaStyle = {
-  padding: '10px',
+  height: '100%',
+  padding: '15px',
   fontSize: '16px',
   width: '100%',
-  boxSizing: 'border-box',
-  borderRadius: '4px',
-  border: 'none',
-  marginBottom: '10px',
+  maxWidth: '300px',
+};
+
+const inputStylee = {
+  height: '100%',
+  padding: '15px',
+  fontSize: '16px',
+  width: '100%',
+  maxWidth: '650px',
+};
+
+const placeholderStyle = {
+  color: '#007bff',
+  fontSize: '14px',
 };
 
 const buttonStyle = {
@@ -63,10 +46,21 @@ const buttonStyle = {
   backgroundColor: 'white',
   color: '#007bff',
   border: 'none',
-  borderRadius: '4px',
+  borderRadius: '20px',
   cursor: 'pointer',
   textAlign: 'center',
-  width: '180px'
+  width: '30%',
+  height: '40px',
+  fontWeight: 'bold',
+  position: 'relative', // Add relative positioning
+};
+
+const arrowStyle = {
+  position: 'absolute',
+  right: '25px', // Adjust position as needed
+  top: '55%',
+  transform: 'translateY(-50%)',
+  color: '#007bff', // Blue color for the arrow
 };
 
 function Footer() {
@@ -95,28 +89,63 @@ function Footer() {
   }, []);
 
   return (
-    <div style={footerStyle}>
-      <div style={leftColumnStyle}>
-        <h2 style={contactTitleStyle}>
-          Success awaits you,<br />
-          contact us today!
-        </h2>
-        
-      </div>
-      <div style={rightColumnStyle}>
-      <form style={formStyle}>
-          <div style={inputRowStyle}>
-            <input type="text" placeholder="First Name" style={inputStyle} />
-            <input type="text" placeholder="Last Name" style={inputStyle} />
-          </div>
-          <div style={inputRowStyle}>
-            <input type="email" placeholder="Email Address" style={inputStyle} />
-            <input type="text" placeholder="Contact No" style={inputStyle} />
-          </div>
-          <textarea placeholder="Tell us more about your fitness goals" style={textareaStyle} />
-          <button type="submit" style={buttonStyle}>Submit Message</button>
-        </form>
-        
+    <div className="container-fluid" style={footerStyle}>
+      <div className="row w-100">
+        <div className="col-md-6 mb-4 mb-md-0 d-flex align-items-center justify-content-center">
+          <h2 style={contactTitleStyle}>
+            Success awaits you,<br />
+            contact us today!
+          </h2>
+        </div>
+        <div className="col-md-6">
+          <form>
+            <div className="form-row">
+              <div className="form-group col-md-6 d-flex">
+                <input 
+                  type="text" 
+                  className="form-control mb-3 me-3" 
+                  placeholder="First Name" 
+                  style={{...inputStyle, ...placeholderStyle}} 
+                  
+                />
+                
+                <input 
+                  type="text" 
+                  className="form-control mb-3" 
+                  placeholder="Last Name" 
+                  style={{...inputStyle, ...placeholderStyle}} 
+                />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group col-md-6 d-flex">
+                <input 
+                  type="email" 
+                  className="form-control mb-3 me-3" 
+                  placeholder="Email Address" 
+                  style={{...inputStyle, ...placeholderStyle}} 
+                />
+                <input 
+                  type="text" 
+                  className="form-control mb-3" 
+                  placeholder="Contact No" 
+                  style={{...inputStyle, ...placeholderStyle}} 
+                />
+              </div>
+            </div>
+            <div className="form-group">
+              <textarea 
+                className="form-control mb-3" 
+                placeholder="Tell us more about your fitness goals" 
+                rows="4" 
+                style={{...inputStylee, ...placeholderStyle}} 
+              ></textarea>
+            </div>
+            <button type="submit" className="btn" style={buttonStyle}>
+              Submit Message <span style={arrowStyle}>&gt;</span>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
