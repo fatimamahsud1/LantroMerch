@@ -9,22 +9,31 @@ const headerStyle = {
   color: '#fff',
   textAlign: 'center',
   position: 'relative',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center', // Centers the content horizontally
-  justifyContent: 'center', // Centers the content vertically
-  height: '560px', // Adjust the height to make sure it occupies the middle of the screen
+  height: '60.25rem', // Adjust the height to make sure it occupies the middle of the screen
 };
 
 const logoStyle = {
-  maxWidth: '100px',
-  margin: '5px',
-  marginTop: '3px', // Decreased marginTop
+  width: '9.75rem', // 156px
+  height: '6rem', // 96px
+  marginTop: '6.25rem', // 100px
+  marginBottom: '5rem', // 80px
 };
 
 const h1Style = {
   fontWeight: '900', // Extra bold
-  fontSize: '3.5rem', // Larger font size
+  fontSize: '6.25rem', // 100px
+  marginBottom: '2.5rem' // 40px
+};
+
+const pStyle = {
+  fontWeight: '400', // Regular weight
+  fontSize: '1.375rem', // 22px
+  marginBottom: '2rem' // 80px
+};
+
+const pContainer = {
+  width: '55rem', // 880px
+  marginBottom: '1.25rem' // 20px
 };
 
 const searchButtonStyle = {
@@ -45,15 +54,15 @@ const Header = ({ setSearchTerm }) => {
   };
 
   return (
-    <div style={headerStyle} className="container-fluid d-flex flex-column justify-content-center align-items-center text-center">
-      <img src={logo} alt="LantroMerch Logo" style={logoStyle} className="img-fluid" />
-      <h1 style={h1Style} className="mb-3 fw-bold display-1">Welcome to LantroMerch!</h1>
-      <div className="container w-50">
-        <p className="mb-4 text-center fw-medium display-11">
+    <div style={headerStyle} className="d-flex flex-column align-items-center justify-content-center">
+      <img src={logo} alt="LantroMerch Logo" style={logoStyle}  />
+      <h1 style={h1Style} >Welcome to LantroMerch!</h1>
+      <div style={pContainer} className="mb-4 text-center">
+        <p style={pStyle}>
           Discover a range of high-quality, innovative products designed with our signature style and cutting-edge technology. Whether you're a tech enthusiast or a loyal fan, you'll find the perfect item to showcase your LantroTech pride. Explore our collection and join us in celebrating the future of technology, one stylish product at a time!
         </p>
       </div>
-      <div className="input-group mb-3 w-50" style={{ maxWidth: '400px' }}>
+      <div className="input-group" style={{ width: '38.75rem', height: '3.125rem' }}> {/* 620px, 50px */}
         <input
           type="text"
           className="form-control"
@@ -62,7 +71,7 @@ const Header = ({ setSearchTerm }) => {
           onChange={handleInputChange}
         />
         <button
-          className="btn w-30"
+          className="btn"
           type="button"
           style={searchButtonStyle}
           onClick={handleSearch}

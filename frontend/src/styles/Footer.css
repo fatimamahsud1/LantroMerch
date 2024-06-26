@@ -1,0 +1,5 @@
+.blue-placeholder::placeholder {
+    color: rgb(0, 140, 153);
+    font-weight: '400px';
+    
+  }

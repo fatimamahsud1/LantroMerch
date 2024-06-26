@@ -1,63 +1,53 @@
 import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import next from '../assets/images/next.png';
+import '../styles/Footer.css';
 
 const footerStyle = {
-  padding: '40px 20px',
+  padding: '2.5rem 1.25rem', // 40px 20px
   color: 'white',
   fontFamily: 'Arial, sans-serif',
   background: 'linear-gradient(to right, #008c99, #008c99)',
-  minHeight: '60vh',
+  minHeight: '37.5rem', // 60vh
   display: 'flex',
-  alignItems: 'center'
+  alignItems: 'center',
+  width: '120.0625rem', // 1921px
+  height: '57.875rem', // 926px
 };
 
 const contactTitleStyle = {
-  fontSize: '48px',
-  fontWeight: 'bold',
-  margin: '0 0 20px 0',
-  textAlign: 'center',
+  fontSize: '5rem', // 80px
+  fontWeight: '800', // Adjusted to a valid font-weight value
+  margin: '0 0 1.25rem 0', // 0 0 20px 0
+  textAlign: 'left',
   color: 'white',
 };
 
-const inputStyle = {
-  height: '100%',
-  padding: '15px',
-  fontSize: '16px',
-  width: '100%',
-  maxWidth: '300px',
-};
-
-const inputStylee = {
-  height: '100%',
-  padding: '15px',
-  fontSize: '16px',
-  width: '100%',
-  maxWidth: '650px',
-};
-
-const placeholderStyle = {
-  color: '#007bff',
-  fontSize: '14px',
-};
-
 const buttonStyle = {
-  padding: '10px 20px',
-  fontSize: '16px',
+  padding: '0.625rem 1.25rem', // 10px 20px
+  fontSize: '1.5rem', // 24px
   backgroundColor: 'white',
-  color: '#007bff',
+  color: '#008C99',
   border: 'none',
-  borderRadius: '20px',
+  borderRadius: '3.125rem', // 50px
   cursor: 'pointer',
   textAlign: 'center',
-  width: '30%',
-  height: '40px',
-  fontWeight: 'bold',
-  position: 'relative', // Add relative positioning
+  width: '20.625rem', // 330px
+  height: '4.25rem', // 68px
+  fontWeight: '800', // Adjusted to a valid font-weight value
+  position: 'relative',
+  marginTop: '1.25rem', // 20px
+};
+
+const nextStyle = {
+  width: '1.875rem', // 30px
+  height: '1.875rem', // 30px
+  marginBottom: '0.25rem', // 20px
 };
 
 const arrowStyle = {
   position: 'absolute',
-  right: '25px', // Adjust position as needed
+  right: '1.5625rem', // 25px
   top: '55%',
   transform: 'translateY(-50%)',
   color: '#007bff', // Blue color for the arrow
@@ -89,60 +79,52 @@ function Footer() {
   }, []);
 
   return (
-    <div className="container-fluid" style={footerStyle}>
+    <div style={footerStyle}>
       <div className="row w-100">
-        <div className="col-md-6 mb-4 mb-md-0 d-flex align-items-center justify-content-center">
+        <div className="col-md-4 mb-4 mb-md-0 d-flex align-items-center justify-content-center">
           <h2 style={contactTitleStyle}>
-            Success awaits you,<br />
-            contact us today!
+            Success awaits <br /> you, contact us <br /> today!
           </h2>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 mb-0 justify-content-start align-items-start mt-2">
           <form>
-            <div className="form-row">
-              <div className="form-group col-md-6 d-flex">
-                <input 
-                  type="text" 
-                  className="form-control mb-3 me-3" 
-                  placeholder="First Name" 
-                  style={{...inputStyle, ...placeholderStyle}} 
-                  
-                />
-                
-                <input 
-                  type="text" 
-                  className="form-control mb-3" 
-                  placeholder="Last Name" 
-                  style={{...inputStyle, ...placeholderStyle}} 
-                />
-              </div>
+            <div className="form-row d-flex">
+              <input 
+                type="text" 
+                className="form-control mb-3 me-3 blue-placeholder" 
+                placeholder="First Name" 
+                style={{ width: '25rem', height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem' }} // 400px, 76px, 24px, 1.125rem
+              />
+              <input 
+                type="text" 
+                className="form-control mb-3 blue-placeholder" 
+                placeholder="Last Name" 
+                style={{ width: '25rem', height: '4.75rem', marginLeft: '1.25rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem' }} // 400px, 76px, 20px, 24px, 1.125rem
+              />
             </div>
-            <div className="form-row">
-              <div className="form-group col-md-6 d-flex">
-                <input 
-                  type="email" 
-                  className="form-control mb-3 me-3" 
-                  placeholder="Email Address" 
-                  style={{...inputStyle, ...placeholderStyle}} 
-                />
-                <input 
-                  type="text" 
-                  className="form-control mb-3" 
-                  placeholder="Contact No" 
-                  style={{...inputStyle, ...placeholderStyle}} 
-                />
-              </div>
+            <div className="form-row d-flex">
+              <input 
+                type="email" 
+                className="form-control mb-3 me-3 blue-placeholder" 
+                placeholder="Email Address" 
+                style={{ width: '25rem', height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem' }} // 400px, 76px, 24px, 1.125rem
+              />
+              <input 
+                type="text" 
+                className="form-control mb-3 blue-placeholder" 
+                placeholder="Contact No" 
+                style={{ width: '25rem', height: '4.75rem', marginLeft: '1.25rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem' }} // 400px, 76px, 20px, 24px, 1.125rem
+              />
             </div>
             <div className="form-group">
               <textarea 
-                className="form-control mb-3" 
+                className="form-control mb-3 blue-placeholder" 
                 placeholder="Tell us more about your fitness goals" 
-                rows="4" 
-                style={{...inputStylee, ...placeholderStyle}} 
+                style={{ width: '52.75rem', height: '12.8125rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem' }} // 844px, 205px, 24px, 1.125rem
               ></textarea>
             </div>
             <button type="submit" className="btn" style={buttonStyle}>
-              Submit Message <span style={arrowStyle}>&gt;</span>
+              Submit Message <span><img src={next} alt="Next icon" style={nextStyle} /></span>
             </button>
           </form>
         </div>
