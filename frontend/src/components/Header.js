@@ -1,35 +1,56 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../assets/images/lantromerch logo.png'; // Verify this path
 import bgImage from '../assets/images/bgg.png'; // Verify this path
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/Header.css'
 
 const headerStyle = {
   backgroundImage: `url(${bgImage})`,
   backgroundSize: 'cover',
   color: '#fff',
   textAlign: 'center',
-  position: 'relative',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center', // Centers the content horizontally
-  justifyContent: 'center', // Centers the content vertically
-  height: '560px', // Adjust the height to make sure it occupies the middle of the screen
+  width:'100%',
 };
 
 const logoStyle = {
-  maxWidth: '100px',
-  margin: '5px',
-  marginTop: '3px', // Decreased marginTop
+  width: '9.75rem',
+  height: '6rem',
+  marginTop: '4.95rem',
+  marginBottom: '9.75rem',
 };
 
 const h1Style = {
-  fontWeight: '900', // Extra bold
-  fontSize: '3.5rem', // Larger font size
+  fontWeight: '900',
+  fontSize: '6.25rem',
+  marginBottom: '1.938rem',
+};
+
+const searchContainer = {
+  maxWidth: '38.75rem',
+  height: '3.125rem',
+  width: '100%',
+};
+
+const pStyle = {
+  fontWeight: '400',
+  fontSize: '1.375rem',
+  marginBottom: '1.938rem',
+};
+
+const pContainer = {
+  marginBottom: '1.938rem',
 };
 
 const searchButtonStyle = {
   backgroundColor: '#edae49',
   color: '#fff',
+  width: '10rem',
+  fontSize: '1.125rem',
+  fontWeight: '600',
+  height: '3.125rem',
+  border: '0rem',
+  borderTopRightRadius: '0.5rem',
+  borderBottomRightRadius: '0.5rem',
 };
 
 const Header = ({ setSearchTerm }) => {
@@ -40,35 +61,42 @@ const Header = ({ setSearchTerm }) => {
   };
 
   const handleSearch = () => {
-    setSearchTerm(inputValue); // Pass the search term to the parent component
-    setInputValue(''); // Clear the input after search
+    setSearchTerm(inputValue);
+    setInputValue('');
   };
 
   return (
-    <div style={headerStyle} className="container-fluid d-flex flex-column justify-content-center align-items-center text-center">
-      <img src={logo} alt="LantroMerch Logo" style={logoStyle} className="img-fluid" />
-      <h1 style={h1Style} className="mb-3 fw-bold display-1">Welcome to LantroMerch!</h1>
-      <div className="container w-50">
-        <p className="mb-4 text-center fw-medium display-11">
-          Discover a range of high-quality, innovative products designed with our signature style and cutting-edge technology. Whether you're a tech enthusiast or a loyal fan, you'll find the perfect item to showcase your LantroTech pride. Explore our collection and join us in celebrating the future of technology, one stylish product at a time!
-        </p>
-      </div>
-      <div className="input-group mb-3 w-50" style={{ maxWidth: '400px' }}>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Search for products"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        <button
-          className="btn w-30"
-          type="button"
-          style={searchButtonStyle}
-          onClick={handleSearch}
-        >
-          Search
-        </button>
+    <div style={headerStyle} className="container-fluid">
+      <div className="row justify-content-center">
+        <div className="col-12 d-flex justify-content-center">
+          <img src={logo} alt="LantroMerch Logo" style={logoStyle} />
+        </div>
+        <div className="col-10">
+          <h1 className="h1-title" style={h1Style}>Welcome to LantroMerch!</h1>
+        </div>
+        <div className="col-12 col-md-8 col-lg-6 text-center" style={pContainer}>
+          <p className="p-title" style={pStyle}>
+            Discover a range of high-quality, innovative products designed with our signature style and cutting-edge technology. Whether you're a tech enthusiast or a loyal fan, you'll find the perfect item to showcase your LantroTech pride. Explore our collection and join us in celebrating the future of technology, one stylish product at a time!
+          </p>
+        </div>
+        <div className="col-12 d-flex justify-content-center mb-5 search-style">
+          <div className="input-group search-style" style={searchContainer}>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search for products"
+              value={inputValue}
+              onChange={handleInputChange}
+            />
+            <button
+              type="button"
+              style={searchButtonStyle}
+              onClick={handleSearch}
+            >
+              Search
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

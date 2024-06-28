@@ -1,0 +1,53 @@
+/* Media Queries */
+@media (max-width: 1920px) {
+  .h1-title {
+    font-size: 5rem !important; /* Adjust font size for larger screens like desktops */
+  }
+  .p-title {
+    font-size: 1.375rem !important;
+  }
+}
+
+@media (max-width: 1264px) {
+  .h1-title {
+    font-size: 4rem !important;
+  }
+  .p-title {
+    font-size: 1.375rem !important;
+  }
+}
+
+@media (max-width: 642px) {
+  .h1-title {
+    font-size: 4rem !important;
+  }
+  .p-title {
+    font-size: 1.375rem !important;
+    margin: 3rem !important;
+  }
+}
+
+@media (max-width: 531px) {
+  .h1-title {
+    font-size: 4rem !important; /* Adjust font size for smaller tablets */
+  }
+  .p-title {
+    font-size: 1.875rem !important;
+    margin: 3rem !important;
+  }
+  .search-style {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .h1-title {
+    font-size: 3rem !important; /* Adjust font size for smaller screens */
+  }
+  .p-title {
+    font-size: 1.125rem !important;
+  }
+  .search-style {
+    width: 100% !important;
+  }
+}

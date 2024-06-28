@@ -1,75 +1,49 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import next from '../assets/images/next.png';
+import '../styles/Footer.css'; // Ensure this import is correct
 
 const footerStyle = {
-  backgroundColor: '#007bff', // Blue background color
-  padding: '40px 20px',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
+  padding: '2.5rem 1.25rem', // 40px 20px
   color: 'white',
   fontFamily: 'Arial, sans-serif',
-};
-
-const leftColumnStyle = {
-  flex: '1',
-  flexDirection: 'column',
-  marginRight: '20px',
-};
-
-const rightColumnStyle = {
-  flex: '1',
-  color: 'white',
-};
-
-const contactTitleStyle = {
-  fontSize: '24px',
-  margin: '0 0 20px 0',
-  textAlign: 'center',
-};
-
-const formStyle = {
+  background: 'linear-gradient(98.49deg, #007499 4.02%, #69B29E 100%)',
+  minHeight: '37.5rem', // 60vh
   display: 'flex',
-  flexDirection: 'column',
-};
-
-const inputRowStyle = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  marginBottom: '10px',
-};
-
-const inputStyle = {
-  padding: '10px',
-  fontSize: '16px',
-  width: '48%',
-  boxSizing: 'border-box',
-  borderRadius: '4px',
-  border: 'none',
-};
-
-const textareaStyle = {
-  padding: '10px',
-  fontSize: '16px',
-  width: '100%',
-  boxSizing: 'border-box',
-  borderRadius: '4px',
-  border: 'none',
-  marginBottom: '10px',
+  alignItems: 'center',
+  justifyContent: 'center', // Center content horizontally
 };
 
 const buttonStyle = {
-  padding: '10px 20px',
-  fontSize: '16px',
+  padding: '0.625rem 1.25rem', // 10px 20px
+  fontSize: '1.5rem', // 24px
   backgroundColor: 'white',
-  color: '#007bff',
+  color: '#008C99',
   border: 'none',
-  borderRadius: '4px',
+  borderRadius: '3.125rem', // 50px
   cursor: 'pointer',
   textAlign: 'center',
-  width: '180px'
+  height: '4.25rem', // 68px
+  fontWeight: '600', // Adjusted to a valid font-weight value
+  position: 'relative',
+  marginTop: '1.25rem', // 20px
 };
 
-function Footer() {
+const nextStyle = {
+  width: '1.5rem', // Adjust the width for smaller screens
+  height: '1.5rem', // Adjust the height for smaller screens
+  marginLeft: '0.5rem', // Adjust the spacing between text and icon
+};
+
+const Footer = () => {
+  const [placeholders, setPlaceholders] = useState({
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    email: 'Email Address',
+    contact: 'Contact No',
+    goals: 'Tell us more about your fitness goals',
+  });
+
   useEffect(() => {
     // Check if the HubSpot form script is already loaded to prevent duplicates
     const existingScript = document.getElementById('hubspot-form-script');
@@ -94,29 +68,83 @@ function Footer() {
     }
   }, []);
 
+  const handleFocus = (field) => {
+    setPlaceholders((prev) => ({ ...prev, [field]: '' }));
+  };
+
+  const handleBlur = (field, value) => {
+    if (!value) {
+      setPlaceholders((prev) => ({
+        ...prev,
+        [field]: field === 'firstName' ? 'First Name'
+          : field === 'lastName' ? 'Last Name'
+          : field === 'email' ? 'Email Address'
+          : field === 'contact' ? 'Contact No'
+          : 'Tell Us More About Your Fitness Goals',
+      }));
+    }
+  };
+
   return (
-    <div style={footerStyle}>
-      <div style={leftColumnStyle}>
-        <h2 style={contactTitleStyle}>
-          Success awaits you,<br />
-          contact us today!
-        </h2>
-        
-      </div>
-      <div style={rightColumnStyle}>
-      <form style={formStyle}>
-          <div style={inputRowStyle}>
-            <input type="text" placeholder="First Name" style={inputStyle} />
-            <input type="text" placeholder="Last Name" style={inputStyle} />
-          </div>
-          <div style={inputRowStyle}>
-            <input type="email" placeholder="Email Address" style={inputStyle} />
-            <input type="text" placeholder="Contact No" style={inputStyle} />
-          </div>
-          <textarea placeholder="Tell us more about your fitness goals" style={textareaStyle} />
-          <button type="submit" style={buttonStyle}>Submit Message</button>
-        </form>
-        
+    <div className="container-fluid d-flex text-container" style={footerStyle}>
+      <div className="row w-100">
+        <div className="col-lg-4 align-items-center justify-content-lg-start text-container">
+          <h2 className="contact-title">
+            Success awaits <br /> you, contact us <br /> today!
+          </h2>
+        </div>
+        <div className="col-lg-6 justify-content-center align-items-center mt-2">
+          <form>
+            <div className="form-row d-flex flex-column flex-lg-row col-lg-6">
+              <input 
+                type="text" 
+                className="form-control mb-3 me-3 blue-placeholder" 
+                placeholder={placeholders.firstName} 
+                onFocus={() => handleFocus('firstName')}
+                onBlur={(e) => handleBlur('firstName', e.target.value)}
+                style={{ height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
+              />
+              <input 
+                type="text" 
+                className="form-control mb-3 blue-placeholder" 
+                placeholder={placeholders.lastName} 
+                onFocus={() => handleFocus('lastName')}
+                onBlur={(e) => handleBlur('lastName', e.target.value)}
+                style={{ height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
+              />
+            </div>
+            <div className="form-row d-flex flex-column flex-lg-row col-lg-6">
+              <input 
+                type="email" 
+                className="form-control mb-3 me-3 blue-placeholder" 
+                placeholder={placeholders.email} 
+                onFocus={() => handleFocus('email')}
+                onBlur={(e) => handleBlur('email', e.target.value)}
+                style={{ height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
+              />
+              <input 
+                type="text" 
+                className="form-control mb-3 blue-placeholder" 
+                placeholder={placeholders.contact} 
+                onFocus={() => handleFocus('contact')}
+                onBlur={(e) => handleBlur('contact', e.target.value)}
+                style={{ height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
+              />
+            </div>
+            <div className="form-group d-flex col-lg-10">
+              <textarea 
+                className="form-control blue-placeholder" 
+                placeholder={placeholders.goals} 
+                onFocus={() => handleFocus('goals')}
+                onBlur={(e) => handleBlur('goals', e.target.value)}
+                style={{ height: '12.8125rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
+              ></textarea>
+            </div>
+            <button type="submit" className="btn col-lg-5 center-on-small" style={buttonStyle}>
+              Submit Message <span className="small"><img src={next} alt="Next icon" style={nextStyle} /></span>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
