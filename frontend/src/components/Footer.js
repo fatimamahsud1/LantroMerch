@@ -1,26 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import next from '../assets/images/next.png';
-import '../styles/Footer.css';
+import '../styles/Footer.css'; // Ensure this import is correct
 
 const footerStyle = {
   padding: '2.5rem 1.25rem', // 40px 20px
   color: 'white',
   fontFamily: 'Arial, sans-serif',
-  background: 'linear-gradient(to right, #008c99, #008c99)',
+  background: 'linear-gradient(98.49deg, #007499 4.02%, #69B29E 100%)',
   minHeight: '37.5rem', // 60vh
   display: 'flex',
   alignItems: 'center',
-  width: '120.0625rem', // 1921px
-  height: '57.875rem', // 926px
-};
-
-const contactTitleStyle = {
-  fontSize: '5rem', // 80px
-  fontWeight: '800', // Adjusted to a valid font-weight value
-  margin: '0 0 1.25rem 0', // 0 0 20px 0
-  textAlign: 'left',
-  color: 'white',
+  justifyContent: 'center', // Center content horizontally
 };
 
 const buttonStyle = {
@@ -32,28 +23,27 @@ const buttonStyle = {
   borderRadius: '3.125rem', // 50px
   cursor: 'pointer',
   textAlign: 'center',
-  width: '20.625rem', // 330px
   height: '4.25rem', // 68px
-  fontWeight: '800', // Adjusted to a valid font-weight value
+  fontWeight: '600', // Adjusted to a valid font-weight value
   position: 'relative',
   marginTop: '1.25rem', // 20px
 };
 
 const nextStyle = {
-  width: '1.875rem', // 30px
-  height: '1.875rem', // 30px
-  marginBottom: '0.25rem', // 20px
+  width: '1.5rem', // Adjust the width for smaller screens
+  height: '1.5rem', // Adjust the height for smaller screens
+  marginLeft: '0.5rem', // Adjust the spacing between text and icon
 };
 
-const arrowStyle = {
-  position: 'absolute',
-  right: '1.5625rem', // 25px
-  top: '55%',
-  transform: 'translateY(-50%)',
-  color: '#007bff', // Blue color for the arrow
-};
+const Footer = () => {
+  const [placeholders, setPlaceholders] = useState({
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    email: 'Email Address',
+    contact: 'Contact No',
+    goals: 'Tell us more about your fitness goals',
+  });
 
-function Footer() {
   useEffect(() => {
     // Check if the HubSpot form script is already loaded to prevent duplicates
     const existingScript = document.getElementById('hubspot-form-script');
@@ -78,53 +68,80 @@ function Footer() {
     }
   }, []);
 
+  const handleFocus = (field) => {
+    setPlaceholders((prev) => ({ ...prev, [field]: '' }));
+  };
+
+  const handleBlur = (field, value) => {
+    if (!value) {
+      setPlaceholders((prev) => ({
+        ...prev,
+        [field]: field === 'firstName' ? 'First Name'
+          : field === 'lastName' ? 'Last Name'
+          : field === 'email' ? 'Email Address'
+          : field === 'contact' ? 'Contact No'
+          : 'Tell Us More About Your Fitness Goals',
+      }));
+    }
+  };
+
   return (
-    <div style={footerStyle}>
+    <div className="container-fluid d-flex text-container" style={footerStyle}>
       <div className="row w-100">
-        <div className="col-md-4 mb-4 mb-md-0 d-flex align-items-center justify-content-center">
-          <h2 style={contactTitleStyle}>
+        <div className="col-lg-4 align-items-center justify-content-lg-start text-container">
+          <h2 className="contact-title">
             Success awaits <br /> you, contact us <br /> today!
           </h2>
         </div>
-        <div className="col-md-6 mb-0 justify-content-start align-items-start mt-2">
+        <div className="col-lg-6 justify-content-center align-items-center mt-2">
           <form>
-            <div className="form-row d-flex">
+            <div className="form-row d-flex flex-column flex-lg-row col-lg-6">
               <input 
                 type="text" 
                 className="form-control mb-3 me-3 blue-placeholder" 
-                placeholder="First Name" 
-                style={{ width: '25rem', height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem' }} // 400px, 76px, 24px, 1.125rem
+                placeholder={placeholders.firstName} 
+                onFocus={() => handleFocus('firstName')}
+                onBlur={(e) => handleBlur('firstName', e.target.value)}
+                style={{ height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
               />
               <input 
                 type="text" 
                 className="form-control mb-3 blue-placeholder" 
-                placeholder="Last Name" 
-                style={{ width: '25rem', height: '4.75rem', marginLeft: '1.25rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem' }} // 400px, 76px, 20px, 24px, 1.125rem
+                placeholder={placeholders.lastName} 
+                onFocus={() => handleFocus('lastName')}
+                onBlur={(e) => handleBlur('lastName', e.target.value)}
+                style={{ height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
               />
             </div>
-            <div className="form-row d-flex">
+            <div className="form-row d-flex flex-column flex-lg-row col-lg-6">
               <input 
                 type="email" 
                 className="form-control mb-3 me-3 blue-placeholder" 
-                placeholder="Email Address" 
-                style={{ width: '25rem', height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem' }} // 400px, 76px, 24px, 1.125rem
+                placeholder={placeholders.email} 
+                onFocus={() => handleFocus('email')}
+                onBlur={(e) => handleBlur('email', e.target.value)}
+                style={{ height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
               />
               <input 
                 type="text" 
                 className="form-control mb-3 blue-placeholder" 
-                placeholder="Contact No" 
-                style={{ width: '25rem', height: '4.75rem', marginLeft: '1.25rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem' }} // 400px, 76px, 20px, 24px, 1.125rem
+                placeholder={placeholders.contact} 
+                onFocus={() => handleFocus('contact')}
+                onBlur={(e) => handleBlur('contact', e.target.value)}
+                style={{ height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
               />
             </div>
-            <div className="form-group">
+            <div className="form-group d-flex col-lg-10">
               <textarea 
-                className="form-control mb-3 blue-placeholder" 
-                placeholder="Tell us more about your fitness goals" 
-                style={{ width: '52.75rem', height: '12.8125rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem' }} // 844px, 205px, 24px, 1.125rem
+                className="form-control blue-placeholder" 
+                placeholder={placeholders.goals} 
+                onFocus={() => handleFocus('goals')}
+                onBlur={(e) => handleBlur('goals', e.target.value)}
+                style={{ height: '12.8125rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
               ></textarea>
             </div>
-            <button type="submit" className="btn" style={buttonStyle}>
-              Submit Message <span><img src={next} alt="Next icon" style={nextStyle} /></span>
+            <button type="submit" className="btn col-lg-5 center-on-small" style={buttonStyle}>
+              Submit Message <span className="small"><img src={next} alt="Next icon" style={nextStyle} /></span>
             </button>
           </form>
         </div>
