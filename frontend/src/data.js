@@ -6,7 +6,7 @@ export const products = [
       "discountedPrice": "22000",
       "originalPrice": "28000",
       "featured": true,
-      "imageURL": "https://pixabay.com/get/g9c6371248d2785e6ef5770b23c2df2e1b5da8445fc43608406f853e22278954f4297de0d69dfc11e7f484d245361f764650c8e07b273537008aac64d069ad565_1280.jpg"
+      "imageURL": "https://pixabay.com/get/g4a049da79733e0e318d03d19e108a27a487379af767fd8965d66bc3433be2bbaf0a3b8a4f69b4a3092827e56685fb998ad82e540ead9b0f3d87a6a63d9eb7e0e_1280.png"
     },
     {
       "name": "Elegant Timepiece",
@@ -14,7 +14,7 @@ export const products = [
       "discountedPrice": "18000",
       "originalPrice": "25000",
       "featured": false,
-      "imageURL": "https://pixabay.com/get/g9c6371248d2785e6ef5770b23c2df2e1b5da8445fc43608406f853e22278954f4297de0d69dfc11e7f484d245361f764650c8e07b273537008aac64d069ad565_1280.jpg"
+      "imageURL": "https://pixabay.com/get/g4a049da79733e0e318d03d19e108a27a487379af767fd8965d66bc3433be2bbaf0a3b8a4f69b4a3092827e56685fb998ad82e540ead9b0f3d87a6a63d9eb7e0e_1280.png"
     },
     {
         "name": "Emerald Elegance Necklace",
@@ -22,7 +22,7 @@ export const products = [
         "discountedPrice": "15000",
         "originalPrice": "20000",
         "featured": false,
-        "imageURL": "https://pixabay.com/get/g9c6371248d2785e6ef5770b23c2df2e1b5da8445fc43608406f853e22278954f4297de0d69dfc11e7f484d245361f764650c8e07b273537008aac64d069ad565_1280.jpg"
+        "imageURL": "https://pixabay.com/get/g4a049da79733e0e318d03d19e108a27a487379af767fd8965d66bc3433be2bbaf0a3b8a4f69b4a3092827e56685fb998ad82e540ead9b0f3d87a6a63d9eb7e0e_1280.png"
       },
         {
         "name": "Retro Leather Satchel",
@@ -30,7 +30,7 @@ export const products = [
         "discountedPrice": "20000",
         "originalPrice": "27000",
         "featured": false,
-        "imageURL": "https://pixabay.com/get/g9c6371248d2785e6ef5770b23c2df2e1b5da8445fc43608406f853e22278954f4297de0d69dfc11e7f484d245361f764650c8e07b273537008aac64d069ad565_1280.jpg"
+        "imageURL": "https://pixabay.com/get/g4a049da79733e0e318d03d19e108a27a487379af767fd8965d66bc3433be2bbaf0a3b8a4f69b4a3092827e56685fb998ad82e540ead9b0f3d87a6a63d9eb7e0e_1280.png"
       },
         {
         "name": "Classic School Backpack",
@@ -38,7 +38,7 @@ export const products = [
         "discountedPrice": "12000",
         "originalPrice": "15000",
         "featured": false,
-        "imageURL": "https://pixabay.com/get/g9c6371248d2785e6ef5770b23c2df2e1b5da8445fc43608406f853e22278954f4297de0d69dfc11e7f484d245361f764650c8e07b273537008aac64d069ad565_1280.jpg"
+        "imageURL": "https://pixabay.com/get/g4a049da79733e0e318d03d19e108a27a487379af767fd8965d66bc3433be2bbaf0a3b8a4f69b4a3092827e56685fb998ad82e540ead9b0f3d87a6a63d9eb7e0e_1280.png"
       },
         {
         "name": "Trendy Sunglasses",
@@ -46,9 +46,7 @@ export const products = [
         "discountedPrice": "8000",
         "originalPrice": "10000",
         "featured": true,
-        "imageURL": "https://pixabay.com/get/g9c6371248d2785e6ef5770b23c2df2e1b5da8445fc43608406f853e22278954f4297de0d69dfc11e7f484d245361f764650c8e07b273537008aac64d069ad565_1280.jpg"
+        "imageURL": "https://pixabay.com/get/g4a049da79733e0e318d03d19e108a27a487379af767fd8965d66bc3433be2bbaf0a3b8a4f69b4a3092827e56685fb998ad82e540ead9b0f3d87a6a63d9eb7e0e_1280.png"
       }
-        
-    // Add more products here...
-  ];
+];
   

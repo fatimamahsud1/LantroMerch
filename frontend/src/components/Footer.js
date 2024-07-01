@@ -1,41 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import next from '../assets/images/next.png';
-import '../styles/Footer.css'; // Ensure this import is correct
+import '../styles/Footer.css';
 
 const footerStyle = {
-  padding: '2.5rem 1.25rem', // 40px 20px
-  color: 'white',
-  fontFamily: 'Arial, sans-serif',
+  padding: '8.5rem 1.25rem', // 136px 20px
+  fontFamily: 'lato',
   background: 'linear-gradient(98.49deg, #007499 4.02%, #69B29E 100%)',
-  minHeight: '37.5rem', // 60vh
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center', // Center content horizontally
+  minHeight: '37.5rem', // 600px
+};
+
+const contactTitleStyle = {
+  fontSize: '5rem', // 80px
+  fontWeight: '800',
+  margin: '0 0 1.25rem 0', // 0 0 20px 0
 };
 
 const buttonStyle = {
   padding: '0.625rem 1.25rem', // 10px 20px
   fontSize: '1.5rem', // 24px
-  backgroundColor: 'white',
   color: '#008C99',
-  border: 'none',
   borderRadius: '3.125rem', // 50px
   cursor: 'pointer',
-  textAlign: 'center',
   height: '4.25rem', // 68px
   fontWeight: '600', // Adjusted to a valid font-weight value
-  position: 'relative',
   marginTop: '1.25rem', // 20px
 };
 
 const nextStyle = {
-  width: '1.5rem', // Adjust the width for smaller screens
-  height: '1.5rem', // Adjust the height for smaller screens
-  marginLeft: '0.5rem', // Adjust the spacing between text and icon
+  width: '1.875rem', // 30px
+  height: '1.875rem', // 30px
+  marginBottom: '0.4rem', // 20px
 };
 
-const Footer = () => {
+const inputStyle = {
+  height: '4.75rem',
+  fontWeight: '400',
+  fontSize: '1.5rem',
+  padding: '1.125rem', 
+  backgroundColor:'#EFFEFF'
+}
+
+const textAreaStyle = {
+  height: '12.8125rem', 
+  fontWeight: '400', 
+  fontSize: '1.5rem', 
+  padding: '1.125rem', 
+  backgroundColor:'#EFFEFF'
+}
+
+function Footer() {
   const [placeholders, setPlaceholders] = useState({
     firstName: 'First Name',
     lastName: 'Last Name',
@@ -86,62 +100,70 @@ const Footer = () => {
   };
 
   return (
-    <div className="container-fluid d-flex text-container" style={footerStyle}>
-      <div className="row w-100">
-        <div className="col-lg-4 align-items-center justify-content-lg-start text-container">
-          <h2 className="contact-title">
+    <div className="container-fluid d-flex p-20 text-white align-items-center justify-content-center h-100" style={footerStyle}>
+      <div className="row w-100 mt-20">
+        <div className="col-xxl-6 col-xl-6 col-md-6 col-sm-12 d-flex justify-content-center align-items-center text-center text-md-left">
+          <h1 style={contactTitleStyle}>
             Success awaits <br /> you, contact us <br /> today!
-          </h2>
+          </h1>
         </div>
-        <div className="col-lg-6 justify-content-center align-items-center mt-2">
-          <form>
-            <div className="form-row d-flex flex-column flex-lg-row col-lg-6">
-              <input 
-                type="text" 
-                className="form-control mb-3 me-3 blue-placeholder" 
-                placeholder={placeholders.firstName} 
-                onFocus={() => handleFocus('firstName')}
-                onBlur={(e) => handleBlur('firstName', e.target.value)}
-                style={{ height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
-              />
-              <input 
-                type="text" 
-                className="form-control mb-3 blue-placeholder" 
-                placeholder={placeholders.lastName} 
-                onFocus={() => handleFocus('lastName')}
-                onBlur={(e) => handleBlur('lastName', e.target.value)}
-                style={{ height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
-              />
+        <div className="col-xxl-6 col-xl-6 col-md-6 col-sm-12 d-flex justify-content-center align-items-center mt-2 flex-column">
+          <form className="w-100 d-flex flex-column align-items-center">
+            <div className="form-row d-flex flex-wrap w-100 justify-content-center ">
+              <div className="col-xxl-5 col-lg-3 col-md-6 col-sm-12 mb-3 me-5">
+                <input 
+                  type="text" 
+                  className="form-control blue-placeholder" 
+                  placeholder={placeholders.firstName} 
+                  onFocus={() => handleFocus('firstName')}
+                  onBlur={(e) => handleBlur('firstName', e.target.value)}
+                  style={inputStyle} // 76px, 24px, 1.125rem
+                />
+              </div>
+              <div className="col-xxl-5 col-lg-3 col-md-6 col-sm-12 mb-3 me-5 ">
+                <input 
+                  type="text" 
+                  className="form-control blue-placeholder" 
+                  placeholder={placeholders.lastName} 
+                  onFocus={() => handleFocus('lastName')}
+                  onBlur={(e) => handleBlur('lastName', e.target.value)}
+                  style={inputStyle} // 76px, 24px, 1.125rem
+                />
+              </div>
             </div>
-            <div className="form-row d-flex flex-column flex-lg-row col-lg-6">
-              <input 
-                type="email" 
-                className="form-control mb-3 me-3 blue-placeholder" 
-                placeholder={placeholders.email} 
-                onFocus={() => handleFocus('email')}
-                onBlur={(e) => handleBlur('email', e.target.value)}
-                style={{ height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
-              />
-              <input 
-                type="text" 
-                className="form-control mb-3 blue-placeholder" 
-                placeholder={placeholders.contact} 
-                onFocus={() => handleFocus('contact')}
-                onBlur={(e) => handleBlur('contact', e.target.value)}
-                style={{ height: '4.75rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
-              />
+            <div className="form-row d-flex flex-wrap w-100 justify-content-center">
+              <div className="col-xxl-5 col-lg-3 col-md-6 col-sm-12 mb-3 me-5">
+                <input 
+                  type="email" 
+                  className="form-control blue-placeholder" 
+                  placeholder={placeholders.email} 
+                  onFocus={() => handleFocus('email')}
+                  onBlur={(e) => handleBlur('email', e.target.value)}
+                  style={inputStyle} // 76px, 24px, 1.125rem
+                />
+              </div>
+              <div className="col-xxl-5 col-lg-3 col-md-6 col-sm-12 mb-3 me-5">
+                <input 
+                  type="text" 
+                  className="form-control blue-placeholder" 
+                  placeholder={placeholders.contact} 
+                  onFocus={() => handleFocus('contact')}
+                  onBlur={(e) => handleBlur('contact', e.target.value)}
+                  style={inputStyle} // 76px, 24px, 1.125rem
+                />
+              </div>
             </div>
-            <div className="form-group d-flex col-lg-10">
+            <div className="form-group col-xxl-11 col-lg-11 col-md-11 col-sm-12 me-5">
               <textarea 
-                className="form-control blue-placeholder" 
+                className="form-control mb-3 blue-placeholder" 
                 placeholder={placeholders.goals} 
                 onFocus={() => handleFocus('goals')}
                 onBlur={(e) => handleBlur('goals', e.target.value)}
-                style={{ height: '12.8125rem', fontWeight: '400', fontSize: '1.5rem', padding: '1.125rem', backgroundColor:'#EFFEFF' }}
+                style={textAreaStyle} // 205px, 24px, 1.125rem
               ></textarea>
             </div>
-            <button type="submit" className="btn col-lg-5 center-on-small" style={buttonStyle}>
-              Submit Message <span className="small"><img src={next} alt="Next icon" style={nextStyle} /></span>
+            <button type="submit" className="btn col-xxl-5 col-lg-5 col-md-5 col-sm-6 bg-white border-0 text-center position-relative" style={buttonStyle}>
+              Submit Message <span><img src={next} alt="Next icon" style={nextStyle} /></span>
             </button>
           </form>
         </div>
