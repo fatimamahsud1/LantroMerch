@@ -14,9 +14,14 @@
   margin: 0 auto; /* Automatically centers the button horizontally */
 }
 
+.container{
+  margin-right: 1rem;
+}
+
 @media (max-width: 431px) {
   .contact-title {
     text-align: center !important; /* Center align on smaller screens */
+
   }
   
   .center-on-small {
@@ -34,10 +39,11 @@
     justify-content: center !important;
     align-items: center !important;
   }
-  
-  .on-change {
-    width: 20rem !important;
+
+  .container {
+    margin: 0 !important;
   }
+  
 }
 
 /* Search container styles, adapted for the Footer */
